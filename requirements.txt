@@ -3,5 +3,4 @@ streamlit
 numpy
 reportlab
 openai
-googleapiclient
 google-api-python-client==1.7.9
