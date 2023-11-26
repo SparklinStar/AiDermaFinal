@@ -4,16 +4,11 @@ from PIL import Image
 import tensorflow as tf
 from tensorflow.keras.applications.efficientnet import preprocess_input
 import style
-import openai
-from dotenv import load_dotenv
-load_dotenv()
-import os
 from googleapiclient.discovery import build
 
 # Set your OpenAI API key and YouTube API key
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
-youtube_api_key = os.getenv("YOUTUBE_API_KEY") 
+
 
 page_bg_img = style.stylespy()  # used for styling the page
 
@@ -66,9 +61,11 @@ if uploaded_file is not None:
         predicted_class = np.argmax(predictions)
             
         confidence = predictions[0][predicted_class]
-
-        st.write(f"Predicted class: {class_names[predicted_class]}")
-        st.write(f"Confidence: {confidence:.2f}")
+        if(confidence>=0.9):
+            st.write(f"Predicted class: {class_names[predicted_class]}")
+            st.write(f"Confidence: {confidence:.2f}")
+        else:
+            st.write("No disease Predicted")
         #user_input = st.text_input("Describe the patient's condition and symptoms:")
         user_input=class_names[predicted_class]
         st.session_state["disease"] = user_input

@@ -36,7 +36,7 @@ try:
         
             context_message = {
             "role": "system",
-            "content": f"You are a skin disease diagnosis doctor. You have diagnosed {user_input} as a skin disease. You are now explaining to the patient what {user_input} is. Do not say that you can not answer the question. Do not say I am an AI language model and not a doctor.",
+            "content": f"You are a skin disease diagnosis doctor. You have diagnosed {user_input} as a skin disease. Answer in short within 50 words. You are now explaining to the patient what {user_input} is. Do not say that you can not answer the question. Do not say I am an AI language model and not a doctor.",
             }
             messages_with_context = st.session_state.messages + [context_message]
 

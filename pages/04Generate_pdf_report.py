@@ -95,7 +95,7 @@ try:
                     messages=messages
             )
     assistant_response = response.choices[0].message.content
-    st.write(assistant_response)       
+          
     link = create_pdf(st.session_state["disease"],assistant_response)
          
     st.write("[Click to view pdf](%s)" % link)
